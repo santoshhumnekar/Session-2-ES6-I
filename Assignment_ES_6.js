@@ -1,41 +1,52 @@
-// part 1 of ES6 assignment
-function person(name) {
+//--------------------------------------------------------------------------------------------------------------------------------------------
+
+function Person(name) {
     this.name = name;
 }
-person.prototype.prefixArray = function(arr) {
+Person.prototype.prefixName = function(arr) {
     return arr.map((character) => {
-        return this.name + character;
-    });
+
+        return this.name + character; //"function " and use fat arrow => refer to example 
+    }, this);
 };
 
+let pers1 = new Person("John");
+pers1.prefixName(["Lucas"])
 
-// part 2 of ES6 assignment
+//-------------------------------------------------------------------------------------------------------------------------------------------
 
-let obj = { first: 'Jane', last: 'Doe', dob: '1/7/1992' };
-let { first: f, last: l, dob: d } = obj;
-f = 'Jane';
-l = 'Doe';
-console.log(f, l, d);
+let obj = { Firstname: 'John', Lastname: 'Petrucci', Dateofbirth: '12-07-1967' }
 
-// {prop} is short for {prop: prop}
-let { first, last } = obj;
-first = 'Jane';
-last = 'Doe', dob = '1/7/1992';
-console.log(first, last, dob);
+let { Firstname: fname, Lastname: lname, Dateofbirth: dob } = obj; // 2. Create Object destructuring.
 
-// part 3 of ES6 assignment
+var printdestructuredobj = (() => {
+    console.log(`Firstname ${fname} Dateofbirth ${dob}`)
+});
 
-var foo = [1, 2, 3];
-var [one, two, three] = foo;
-// one => 1, two => 2, three => 3
+printdestructuredobj();
 
-var { a, b } = { a: 1, b: 2 };
-// a => 1, b => 2
+//---------------------------------------------------------------------------------------------------------------------------------------------------
 
-// part 4 of ES6 assignment
+//3.  Create Array destructuring.
+let foo = ['Araya', 'Dimebag', 'Randy'];
+let [one, two, three] = foo;
 
+let printdestructuredArray = (() => {
+    console.log(one);
+    console.log(two);
+    console.log(three);
+});
+printdestructuredArray();
 
-(function() {
-    let food = 'Meow Mix';
+//---------------------------------------------------------------------------------------------------------------------------------------------------
+
+//4. Replace IIFEs with Blocks
+
+((someFunction) => {
+    food = 'Meow Mix';
+    console.log(food)
 })();
-console.log(food);
+food = 'Cat guts';
+console.log(food)
+
+//---------------------------------------------------------------------------------------------------------------------------------------------------
